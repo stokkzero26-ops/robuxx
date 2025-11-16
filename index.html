@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RAT Simulator — UI-only (Edukasi)</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Simulasi UI-only: memperlihatkan mekanisme RAT secara visual. Semua data dummy.">
+</head>
+<body>
+  <div id="app">
+    <aside class="sidebar">
+      <div class="brand">RΔT • <span>Simulator</span></div>
+      <nav>
+        <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+        <button class="nav-btn" data-view="mechanism">Mekanisme</button>
+        <button class="nav-btn" data-view="clients">Clients</button>
+        <button class="nav-btn" data-view="logs">Logs</button>
+        <button class="nav-btn" data-view="about">Tentang</button>
+      </nav>
+      <div class="footer-note">Mode: <strong>UI-only</strong></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="top-title">Simulasi Panel Kontrol — Cyberpunk Dark</div>
+        <div class="top-actions">
+          <button id="spawn-client">Spawn Client</button>
+          <button id="clear-logs">Clear Logs</button>
+        </div>
+      </header>
+
+      <section id="view-dashboard" class="view active">
+        <div class="grid">
+          <div class="card stat">
+            <h3>Total Clients</h3>
+            <div id="stat-clients">0</div>
+            <small>dummy count</small>
+          </div>
+
+          <div class="card stat">
+            <h3>Online</h3>
+            <div id="stat-online">0</div>
+            <small>dummy status</small>
+          </div>
+
+          <div class="card chart card-large">
+            <h3>Command Queue (simulated)</h3>
+            <div id="queue-area" class="queue-area">— empty —</div>
+          </div>
+
+          <div class="card diagram">
+            <h3>Mekanisme (animasi)</h3>
+            <div class="diagram-box">
+              <div class="node client-node">Client</div>
+              <div class="arrow">→</div>
+              <div class="node server-node">Server (Sim)</div>
+              <div class="arrow">→</div>
+              <div class="node ui-node">UI</div>
+            </div>
+            <small>Animasi alur handshake & heartbeat (visual only)</small>
+          </div>
+
+          <div class="card clients-list card-large">
+            <h3>Clients (Dummy)</h3>
+            <div id="clients-list"></div>
+          </div>
+
+          <div class="card logs card-large">
+            <h3>Activity Logs</h3>
+            <div id="log-area"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-mechanism" class="view">
+        <div class="doc">
+          <h2>Mekanisme Kerja (Visual & Edukasi)</h2>
+          <ol>
+            <li><strong>Handshake:</strong> Client mengirim 'hello' (simulasi) ke server lokal (tidak nyata).</li>
+            <li><strong>Heartbeat:</strong> Client meng-update status secara berkala (dummy).</li>
+            <li><strong>Command Queue:</strong> Server mengantri perintah visual (mis: "notify", "screenshot") yang hanya memicu animasi/alert di UI.</li>
+            <li><strong>Telemetry:</strong> Data yang terlihat di UI adalah palsu untuk tujuan demo.</li>
+          </ol>
+          <p class="warning">Disclaimer: Ini hanya simulasi UI untuk edukasi & mitigasi. Dilarang mencoba akses tanpa izin.</p>
+        </div>
+      </section>
+
+      <section id="view-clients" class="view">
+        <div class="doc">
+          <h2>Clients (Detail Dummy)</h2>
+          <div id="client-detail">Pilih client pada daftar di Dashboard.</div>
+        </div>
+      </section>
+
+      <section id="view-logs" class="view">
+        <div class="doc">
+          <h2>Logs</h2>
+          <div id="logs-full"></div>
+        </div>
+      </section>
+
+      <section id="view-about" class="view">
+        <div class="doc">
+          <h2>Tentang Project</h2>
+          <p>Simulasi dibuat untuk tujuan edukasi: memperlihatkan arsitektur & tanda-tanda trafik agar peserta paham bagaimana mendeteksi, bukan cara menyerang.</p>
+          <p>Semua data bersifat <em>dummy</em> dan tindakan di UI <strong>tidak</strong> melakukan eksekusi di luar browser.</p>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div>© Simulator • Buat oleh kamu — Sesuaikan README sebelum publikasi</div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- modal for simulated actions -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <h3 id="modal-title">Action</h3>
+      <pre id="modal-body" style="white-space:pre-wrap"></pre>
+      <div class="modal-actions">
+        <button id="modal-close">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+  </html>
